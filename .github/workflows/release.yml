@@ -1,0 +1,45 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install pyinstaller
+
+      - name: Build executable
+        run: pyinstaller SynologyNAS-v1.0.0.spec
+
+      - name: Rename executable with release tag
+        shell: pwsh
+        run: |
+          $version = "${{ github.ref_name }}"
+          if ([string]::IsNullOrEmpty($version) -or $version -eq "main") {
+            $version = "dev"
+          }
+          Copy-Item "dist/SynologyNAS-v1.0.0.exe" "dist/SynologyNAS-$version.exe"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/SynologyNAS-*.exe
+          generate_release_notes: true

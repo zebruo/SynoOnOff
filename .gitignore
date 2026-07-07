@@ -1,0 +1,18 @@
+# Configuration personnelle (IP, adresse MAC, identifiants SSH) — ne jamais partager
+config.json
+
+# Cache et bytecode Python
+__pycache__/
+*.pyc
+
+# Artefacts de compilation PyInstaller (regénérés par `pyinstaller *.spec`)
+build/
+dist/
+
+# Environnement virtuel Python (si utilisé)
+.venv/
+venv/
+
+# Fichiers système Windows
+Thumbs.db
+desktop.ini
