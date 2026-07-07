@@ -1,6 +1,8 @@
+import sys
 import threading
 import tkinter as tk
 from datetime import datetime
+from pathlib import Path
 from tkinter import ttk
 
 import paramiko
@@ -8,6 +10,11 @@ import paramiko
 import nas_control
 
 STATUS_REFRESH_MS = 5000
+
+if getattr(sys, "frozen", False):
+    ICON_PATH = Path(sys._MEIPASS) / "icon.ico"
+else:
+    ICON_PATH = Path(__file__).parent / "icon.ico"
 
 
 class App(tk.Tk):
@@ -17,6 +24,7 @@ class App(tk.Tk):
 
         self.config_data = nas_control.load_config()
         self.title(f"{self.config_data['nas_name']} - Contrôle à distance")
+        self.iconbitmap(ICON_PATH)
 
         pad = {"padx": 10, "pady": 6}
         row = 0

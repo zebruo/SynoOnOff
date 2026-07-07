@@ -18,9 +18,9 @@ VSVersionInfo(
         [StringStruct(u'CompanyName', u''),
         StringStruct(u'FileDescription', u'Controle a distance du NAS Synology'),
         StringStruct(u'FileVersion', u'1.0.0.0'),
-        StringStruct(u'InternalName', u'SynologyNAS'),
-        StringStruct(u'OriginalFilename', u'SynologyNAS-v1.0.0.exe'),
-        StringStruct(u'ProductName', u'NAS-4TO Controle'),
+        StringStruct(u'InternalName', u'SynoOnOff'),
+        StringStruct(u'OriginalFilename', u'SynoOnOff.exe'),
+        StringStruct(u'ProductName', u'SynoOnOff'),
         StringStruct(u'ProductVersion', u'1.0.0.0')])
       ]),
     VarFileInfo([VarStruct(u'Translation', [1036, 1200])])

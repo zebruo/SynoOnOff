@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 256 256"
+   width="256"
+   height="256"
+   role="img"
+   aria-label="SynoOnOff"
+   version="1.1"
+   id="svg5"
+   sodipodi:docname="icon.svg"
+   inkscape:version="1.4.2 (f4327f4, 2025-05-13)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview5"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="3.1523438"
+     inkscape:cx="127.84139"
+     inkscape:cy="128"
+     inkscape:window-width="1920"
+     inkscape:window-height="1009"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg5"
+     showguides="true" />
+  <defs
+     id="defs2">
+    <linearGradient
+       id="bg"
+       x1="0"
+       y1="0"
+       x2="0"
+       y2="1">
+      <stop
+         offset="0"
+         stop-color="#141a26"
+         id="stop1" />
+      <stop
+         offset="1"
+         stop-color="#0d1119"
+         id="stop2" />
+    </linearGradient>
+  </defs>
+  <!-- Fond -->
+  <rect
+     x="0"
+     y="0"
+     width="256"
+     height="256"
+     rx="56"
+     fill="url(#bg)"
+     id="rect2" />
+  <!-- Anneau d'alimentation, ouvert en haut -->
+  <path
+     d="M169.3,69.0 A72,72 0 1,1 86.7,69.0"
+     fill="none"
+     stroke="#e8a33d"
+     stroke-width="16"
+     stroke-linecap="round"
+     id="path2" />
+  <!-- Corps du NAS, traverse l'ouverture de l'anneau -->
+  <rect
+     x="112"
+     y="46"
+     width="32"
+     height="72"
+     rx="8"
+     fill="#6fd3c7"
+     id="rect3" />
+  <!-- Baies de disques, verticales côte à côte -->
+  <rect
+     x="117"
+     y="55.102848"
+     width="9.1000023"
+     height="37.77943"
+     rx="2.6000004"
+     fill="#0b0f17"
+     id="rect4"
+     style="stroke-width:1.10808" />
+  <rect
+     x="129.89999"
+     y="55.102848"
+     width="9.1000023"
+     height="37.77943"
+     rx="2.6000004"
+     fill="#0b0f17"
+     id="rect5"
+     style="stroke-width:1.10808" />
+  <!-- Voyant d'alimentation -->
+  <circle
+     cx="128"
+     cy="110"
+     r="4"
+     fill="#e8a33d"
+     id="circle5" />
+</svg>

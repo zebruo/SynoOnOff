@@ -27,7 +27,7 @@ jobs:
           pip install pyinstaller
 
       - name: Build executable
-        run: pyinstaller SynologyNAS.spec
+        run: pyinstaller SynoOnOff.spec
 
       - name: Rename executable with release tag
         shell: pwsh
@@ -36,10 +36,10 @@ jobs:
           if ([string]::IsNullOrEmpty($version) -or $version -eq "main") {
             $version = "dev"
           }
-          Copy-Item "dist/SynologyNAS.exe" "dist/SynologyNAS-$version.exe"
+          Copy-Item "dist/SynoOnOff.exe" "dist/SynoOnOff-$version.exe"
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          files: dist/SynologyNAS-*.exe
+          files: dist/SynoOnOff-*.exe
           generate_release_notes: true
