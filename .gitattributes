@@ -1,0 +1,7 @@
+# Fichiers exclus des archives générées par Git (git archive, et donc des
+# "Source code (zip/tar.gz)" créés automatiquement par GitHub sur chaque release) :
+# utiles pour développer/maintenir le dépôt, mais pas pour utiliser le programme.
+
+.gitattributes export-ignore
+.gitignore export-ignore
+.github/** export-ignore
