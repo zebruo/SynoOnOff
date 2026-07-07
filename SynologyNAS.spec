@@ -22,7 +22,7 @@ exe = EXE(
     a.binaries,
     a.datas,
     [],
-    name='SynologyNAS-v1.0.0',
+    name='SynologyNAS',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
