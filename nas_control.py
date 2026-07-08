@@ -1,4 +1,5 @@
 import json
+import platform
 import socket
 import subprocess
 import sys
@@ -82,12 +83,13 @@ def shutdown(config, password):
 
 def is_online(config, timeout=1.5):
     try:
-        result = subprocess.run(
-            ["ping", "-n", "1", "-w", str(int(timeout * 1000)), config["nas_ip"]],
-            capture_output=True,
-            timeout=timeout + 1,
-            creationflags=subprocess.CREATE_NO_WINDOW,
-        )
+        if platform.system() == "Windows":
+            cmd = ["ping", "-n", "1", "-w", str(int(timeout * 1000)), config["nas_ip"]]
+            kwargs = {"creationflags": subprocess.CREATE_NO_WINDOW}
+        else:
+            cmd = ["ping", "-c", "1", "-W", str(max(1, int(timeout))), config["nas_ip"]]
+            kwargs = {}
+        result = subprocess.run(cmd, capture_output=True, timeout=timeout + 1, **kwargs)
         return result.returncode == 0
     except Exception:
         return False

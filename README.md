@@ -1,6 +1,6 @@
 # SynoOnOff
 
-SynoOnOff est un petit outil qui permet d'allumer et d'éteindre un NAS Synology à distance depuis un PC Windows, sans passer par l'interface web de DSM ni par une manipulation manuelle.
+SynoOnOff est un petit outil qui permet d'allumer et d'éteindre un NAS Synology à distance depuis un PC Windows ou Linux, sans passer par l'interface web de DSM ni par une manipulation manuelle.
 
 ## Pourquoi
 
@@ -14,12 +14,12 @@ Un NAS Synology consomme de l'énergie et fait du bruit en continu, alors qu'il 
 Le projet propose trois façons d'utiliser la même logique :
 
 - une **interface graphique** simple, avec un bouton pour allumer, un champ mot de passe et un bouton pour éteindre, un indicateur de statut en ligne/hors ligne, et un rapport d'activité ;
-- une **ligne de commande** (`python synology_power.py on`/`off`), qui ne nécessite aucune interaction humaine et peut donc être déclenchée automatiquement — par exemple par le Planificateur de tâches Windows pour éteindre le NAS chaque soir à heure fixe, ou intégrée dans un script plus large ;
-- un **exécutable Windows autonome**, qui ne nécessite pas d'installer Python pour être utilisé.
+- une **ligne de commande** (`python synology_power.py on`/`off`), qui ne nécessite aucune interaction humaine et peut donc être déclenchée automatiquement — par exemple par le Planificateur de tâches Windows (ou une tâche `cron` sous Linux) pour éteindre le NAS chaque soir à heure fixe, ou intégrée dans un script plus large ;
+- un **exécutable autonome**, qui ne nécessite pas d'installer Python pour être utilisé — disponible pour **Windows** (`.exe`) et **Linux** (binaire natif), téléchargeables tous les deux depuis la page [Releases](../../releases) du dépôt.
 
 La configuration (adresse du NAS, identifiants) est modifiable directement depuis l'interface et sauvegardée localement, sans jamais être codée en dur dans le programme partagé.
 
-Trois fichiers `.bat` sont fournis comme raccourcis de lancement pour une utilisation **depuis les sources** (sans passer par l'exécutable compilé) :
+Trois fichiers `.bat` sont fournis comme raccourcis de lancement **sous Windows**, pour une utilisation depuis les sources (sans passer par l'exécutable compilé) :
 
 - **`nas_gui.bat`** — lance l'interface graphique sans fenêtre console (`pythonw`), pratique pour quelqu'un qui clone le dépôt sans vouloir compiler l'exe.
 - **`allumer_nas.bat`** / **`eteindre_nas.bat`** — lancent le CLI (`python synology_power.py on`/`off`) sans avoir à retaper la commande ; utiles aussi comme base pour une éventuelle tâche planifiée Windows, seul le CLI se prêtant à l'automatisation.

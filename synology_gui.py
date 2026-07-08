@@ -24,7 +24,11 @@ class App(tk.Tk):
 
         self.config_data = nas_control.load_config()
         self.title(f"{self.config_data['nas_name']} - Contrôle à distance")
-        self.iconbitmap(ICON_PATH)
+        try:
+            self.iconbitmap(ICON_PATH)
+        except tk.TclError:
+            # Le format .ico n'est pas supporté par Tk sous Linux/macOS.
+            pass
 
         pad = {"padx": 10, "pady": 6}
         row = 0

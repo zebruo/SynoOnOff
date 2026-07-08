@@ -10,7 +10,7 @@ permissions:
   contents: write
 
 jobs:
-  build-and-release:
+  build-windows:
     runs-on: windows-latest
     steps:
       - name: Checkout repository
@@ -38,8 +38,61 @@ jobs:
           }
           Copy-Item "dist/SynoOnOff.exe" "dist/SynoOnOff-$version.exe"
 
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-build
+          path: dist/SynoOnOff-*.exe
+
+  build-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install system dependencies
+        run: sudo apt-get update && sudo apt-get install -y python3-tk
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install pyinstaller
+
+      - name: Build executable
+        run: pyinstaller SynoOnOff.spec
+
+      - name: Rename executable with release tag
+        run: |
+          version="${{ github.ref_name }}"
+          if [ -z "$version" ] || [ "$version" = "main" ]; then
+            version="dev"
+          fi
+          chmod +x dist/SynoOnOff
+          cp dist/SynoOnOff "dist/SynoOnOff-$version-linux"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: linux-build
+          path: dist/SynoOnOff-*-linux
+
+  release:
+    needs: [build-windows, build-linux]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: dist
+          merge-multiple: true
+
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          files: dist/SynoOnOff-*.exe
+          files: dist/*
           generate_release_notes: true
