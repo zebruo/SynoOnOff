@@ -1,3 +1,8 @@
+# Normalise les fins de ligne en LF pour les fichiers texte, quel que soit
+# l'OS/l'outil qui les modifie (évite les faux "modified" liés au CRLF/LF
+# quand le projet est édité à la fois depuis Windows et depuis WSL/Linux).
+* text=auto eol=lf
+
 # Fichiers exclus des archives générées par Git (git archive, et donc des
 # "Source code (zip/tar.gz)" créés automatiquement par GitHub sur chaque release) :
 # utiles pour développer/maintenir le dépôt, mais pas pour utiliser le programme.
